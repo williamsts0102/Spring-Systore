@@ -22,10 +22,6 @@ public class DetalleCompra {
     @JoinColumn(name = "cod_pro",insertable = false,updatable = false,referencedColumnName ="cod_pro")
     private Producto producto;
 
-    @ManyToOne
-    @JoinColumn(name = "cod_prov",insertable = false,updatable = false,referencedColumnName ="cod_prov")
-    private Proveedor proveedor;
-
     @Column(name = "precio")
     private Double precio;
 
@@ -56,14 +52,6 @@ public class DetalleCompra {
 		this.producto = producto;
 	}
 
-	public Proveedor getProveedor() {
-		return proveedor;
-	}
-
-	public void setProveedor(Proveedor proveedor) {
-		this.proveedor = proveedor;
-	}
-
 	public Double getPrecio() {
 		return precio;
 	}
@@ -79,5 +67,5 @@ public class DetalleCompra {
 	public void setCantidad(Integer cantidad) {
 		this.cantidad = cantidad;
 	}
-    
+
 }

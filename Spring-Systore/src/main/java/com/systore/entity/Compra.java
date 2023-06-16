@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
@@ -19,6 +21,10 @@ public class Compra {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cod_com")
     private Integer codigo;
+    
+    @ManyToOne
+    @JoinColumn(name = "cod_prov",insertable = false,updatable = false,referencedColumnName ="cod_prov")
+    private Proveedor proveedor;
 
     @Column(name = "fec_bol")
     private LocalDate fechaBoleta;
@@ -33,6 +39,14 @@ public class Compra {
 
 	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
+	}
+
+	public Proveedor getProveedor() {
+		return proveedor;
+	}
+
+	public void setProveedor(Proveedor proveedor) {
+		this.proveedor = proveedor;
 	}
 
 	public LocalDate getFechaBoleta() {
@@ -50,5 +64,5 @@ public class Compra {
 	public void setListaDetallesCompra(List<DetalleCompra> listaDetallesCompra) {
 		this.listaDetallesCompra = listaDetallesCompra;
 	}
-    
+
 }
